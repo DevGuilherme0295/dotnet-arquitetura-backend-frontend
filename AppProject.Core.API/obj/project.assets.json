@@ -1,0 +1,520 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "Microsoft.AspNetCore.OpenApi/9.0.14": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.OpenApi": "1.6.17"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Microsoft.OpenApi/1.6.17": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
+      "StyleCop.Analyzers/1.1.118": {
+        "type": "package"
+      },
+      "AppProject.Core.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Contracts.dll": {}
+        }
+      },
+      "AppProject.Core.Controllers.General/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Core.Contracts": "1.0.0",
+          "AppProject.Core.Models.General": "1.0.0",
+          "AppProject.Core.Services.General": "1.0.0",
+          "AppProject.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Controllers.General.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Controllers.General.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "AppProject.Core.Infrastructure.AI/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Core.Contracts": "1.0.0",
+          "AppProject.Core.Models.General": "1.0.0",
+          "AppProject.Exceptions": "1.0.0",
+          "AppProject.Resources": "1.0.0",
+          "AppProject.Utils": "1.0.0",
+          "Appproject.Core.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Infrastructure.AI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Infrastructure.AI.dll": {}
+        }
+      },
+      "AppProject.Core.Infrastructure.Database/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Core.Contracts": "1.0.0",
+          "AppProject.Core.Models.General": "1.0.0",
+          "AppProject.Exceptions": "1.0.0",
+          "AppProject.Resources": "1.0.0",
+          "AppProject.Utils": "1.0.0",
+          "Appproject.Core.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Infrastructure.Database.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Infrastructure.Database.dll": {}
+        }
+      },
+      "AppProject.Core.Infrastructure.Email/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Core.Contracts": "1.0.0",
+          "AppProject.Exceptions": "1.0.0",
+          "AppProject.Resources": "1.0.0",
+          "AppProject.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Infrastructure.Email.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Infrastructure.Email.dll": {}
+        }
+      },
+      "AppProject.Core.Infrastructure.Jobs/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Core.Contracts": "1.0.0",
+          "AppProject.Core.Models.General": "1.0.0",
+          "AppProject.Exceptions": "1.0.0",
+          "AppProject.Resources": "1.0.0",
+          "AppProject.Utils": "1.0.0",
+          "Appproject.Core.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Infrastructure.Jobs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Infrastructure.Jobs.dll": {}
+        }
+      },
+      "Appproject.Core.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Exceptions": "1.0.0",
+          "AppProject.Models": "1.0.0",
+          "AppProject.Resources": "1.0.0",
+          "AppProject.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Appproject.Core.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Appproject.Core.Models.dll": {}
+        }
+      },
+      "AppProject.Core.Models.General/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Utils": "1.0.0",
+          "Appproject.Core.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Models.General.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Models.General.dll": {}
+        }
+      },
+      "AppProject.Core.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Core.Contracts": "1.0.0",
+          "AppProject.Core.Infrastructure.AI": "1.0.0",
+          "AppProject.Core.Infrastructure.Database": "1.0.0",
+          "AppProject.Core.Infrastructure.Email": "1.0.0",
+          "AppProject.Core.Infrastructure.Jobs": "1.0.0",
+          "AppProject.Core.Models.General": "1.0.0",
+          "AppProject.Exceptions": "1.0.0",
+          "AppProject.Resources": "1.0.0",
+          "AppProject.Utils": "1.0.0",
+          "Appproject.Core.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Services.dll": {}
+        }
+      },
+      "AppProject.Core.Services.General/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Core.Models.General": "1.0.0",
+          "AppProject.Core.Services": "1.0.0",
+          "AppProject.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Core.Services.General.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Core.Services.General.dll": {}
+        }
+      },
+      "AppProject.Exceptions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Exceptions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Exceptions.dll": {}
+        }
+      },
+      "AppProject.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Models.dll": {}
+        }
+      },
+      "AppProject.Resources/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "AppProject.Utils": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/AppProject.Resources.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Resources.dll": {}
+        }
+      },
+      "AppProject.Utils/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/AppProject.Utils.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AppProject.Utils.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Microsoft.AspNetCore.OpenApi/9.0.14": {
+      "sha512": "ywJcbdtem5tFlg73eCFb/ORdsZlASaTf0XixxsTQ8Z/ama/83CXB/nvBrvCrxkk62AKpdTxiESK0SvgmZ9HKFA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.openapi/9.0.14",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net9.0/Microsoft.AspNetCore.OpenApi.dll",
+        "lib/net9.0/Microsoft.AspNetCore.OpenApi.xml",
+        "microsoft.aspnetcore.openapi.9.0.14.nupkg.sha512",
+        "microsoft.aspnetcore.openapi.nuspec"
+      ]
+    },
+    "Microsoft.OpenApi/1.6.17": {
+      "sha512": "Le+kehlmrlQfuDFUt1zZ2dVwrhFQtKREdKBo+rexOwaCoYP0/qpgT9tLxCsZjsgR5Itk1UKPcbgO+FyaNid/bA==",
+      "type": "package",
+      "path": "microsoft.openapi/1.6.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/netstandard2.0/Microsoft.OpenApi.dll",
+        "lib/netstandard2.0/Microsoft.OpenApi.pdb",
+        "lib/netstandard2.0/Microsoft.OpenApi.xml",
+        "microsoft.openapi.1.6.17.nupkg.sha512",
+        "microsoft.openapi.nuspec"
+      ]
+    },
+    "StyleCop.Analyzers/1.1.118": {
+      "sha512": "Onx6ovGSqXSK07n/0eM3ZusiNdB6cIlJdabQhWGgJp3Vooy9AaLS/tigeybOJAobqbtggTamoWndz72JscZBvw==",
+      "type": "package",
+      "path": "stylecop.analyzers/1.1.118",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "THIRD-PARTY-NOTICES.txt",
+        "analyzers/dotnet/cs/StyleCop.Analyzers.CodeFixes.dll",
+        "analyzers/dotnet/cs/StyleCop.Analyzers.dll",
+        "analyzers/dotnet/cs/de-DE/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/en-GB/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/es-MX/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/fr-FR/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/pl-PL/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/pt-BR/StyleCop.Analyzers.resources.dll",
+        "analyzers/dotnet/cs/ru-RU/StyleCop.Analyzers.resources.dll",
+        "stylecop.analyzers.1.1.118.nupkg.sha512",
+        "stylecop.analyzers.nuspec",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
+    "AppProject.Core.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Contracts/AppProject.Core.Contracts.csproj",
+      "msbuildProject": "../AppProject.Core.Contracts/AppProject.Core.Contracts.csproj"
+    },
+    "AppProject.Core.Controllers.General/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Controllers.General/AppProject.Core.Controllers.General.csproj",
+      "msbuildProject": "../AppProject.Core.Controllers.General/AppProject.Core.Controllers.General.csproj"
+    },
+    "AppProject.Core.Infrastructure.AI/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Infrastructure.AI/AppProject.Core.Infrastructure.AI.csproj",
+      "msbuildProject": "../AppProject.Core.Infrastructure.AI/AppProject.Core.Infrastructure.AI.csproj"
+    },
+    "AppProject.Core.Infrastructure.Database/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Infrastructure.Database/AppProject.Core.Infrastructure.Database.csproj",
+      "msbuildProject": "../AppProject.Core.Infrastructure.Database/AppProject.Core.Infrastructure.Database.csproj"
+    },
+    "AppProject.Core.Infrastructure.Email/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Infrastructure.Email/AppProject.Core.Infrastructure.Email.csproj",
+      "msbuildProject": "../AppProject.Core.Infrastructure.Email/AppProject.Core.Infrastructure.Email.csproj"
+    },
+    "AppProject.Core.Infrastructure.Jobs/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Infrastructure.Jobs/AppProject.Core.Infrastructure.Jobs.csproj",
+      "msbuildProject": "../AppProject.Core.Infrastructure.Jobs/AppProject.Core.Infrastructure.Jobs.csproj"
+    },
+    "Appproject.Core.Models/1.0.0": {
+      "type": "project",
+      "path": "../Appproject.Core.Models/Appproject.Core.Models.csproj",
+      "msbuildProject": "../Appproject.Core.Models/Appproject.Core.Models.csproj"
+    },
+    "AppProject.Core.Models.General/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Models.General/AppProject.Core.Models.General.csproj",
+      "msbuildProject": "../AppProject.Core.Models.General/AppProject.Core.Models.General.csproj"
+    },
+    "AppProject.Core.Services/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Services/AppProject.Core.Services.csproj",
+      "msbuildProject": "../AppProject.Core.Services/AppProject.Core.Services.csproj"
+    },
+    "AppProject.Core.Services.General/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Core.Services.General/AppProject.Core.Services.General.csproj",
+      "msbuildProject": "../AppProject.Core.Services.General/AppProject.Core.Services.General.csproj"
+    },
+    "AppProject.Exceptions/1.0.0": {
+      "type": "project",
+      "path": "../AppProjects.Exceptions/AppProject.Exceptions.csproj",
+      "msbuildProject": "../AppProjects.Exceptions/AppProject.Exceptions.csproj"
+    },
+    "AppProject.Models/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Models/AppProject.Models.csproj",
+      "msbuildProject": "../AppProject.Models/AppProject.Models.csproj"
+    },
+    "AppProject.Resources/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Resources/AppProject.Resources.csproj",
+      "msbuildProject": "../AppProject.Resources/AppProject.Resources.csproj"
+    },
+    "AppProject.Utils/1.0.0": {
+      "type": "project",
+      "path": "../AppProject.Utils/AppProject.Utils.csproj",
+      "msbuildProject": "../AppProject.Utils/AppProject.Utils.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "AppProject.Core.Contracts >= 1.0.0",
+      "AppProject.Core.Controllers.General >= 1.0.0",
+      "AppProject.Core.Infrastructure.AI >= 1.0.0",
+      "AppProject.Core.Infrastructure.Database >= 1.0.0",
+      "AppProject.Core.Infrastructure.Email >= 1.0.0",
+      "AppProject.Core.Infrastructure.Jobs >= 1.0.0",
+      "AppProject.Core.Services >= 1.0.0",
+      "AppProject.Core.Services.General >= 1.0.0",
+      "AppProject.Resources >= 1.0.0",
+      "AppProject.Utils >= 1.0.0",
+      "Microsoft.AspNetCore.OpenApi >= 9.0.14",
+      "StyleCop.Analyzers >= 1.1.118"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Course\\dotnet-template\\AppProject.Core.API\\AppProject.Core.API.csproj",
+      "projectName": "AppProject.Core.API",
+      "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.API\\AppProject.Core.API.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Course\\dotnet-template\\AppProject.Core.API\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "C:\\Course\\dotnet-template\\AppProject.Core.Contracts\\AppProject.Core.Contracts.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.Contracts\\AppProject.Core.Contracts.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Core.Controllers.General\\AppProject.Core.Controllers.General.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.Controllers.General\\AppProject.Core.Controllers.General.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Core.Infrastructure.AI\\AppProject.Core.Infrastructure.AI.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.Infrastructure.AI\\AppProject.Core.Infrastructure.AI.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Core.Infrastructure.Database\\AppProject.Core.Infrastructure.Database.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.Infrastructure.Database\\AppProject.Core.Infrastructure.Database.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Core.Infrastructure.Email\\AppProject.Core.Infrastructure.Email.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.Infrastructure.Email\\AppProject.Core.Infrastructure.Email.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Core.Infrastructure.Jobs\\AppProject.Core.Infrastructure.Jobs.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.Infrastructure.Jobs\\AppProject.Core.Infrastructure.Jobs.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Core.Services.General\\AppProject.Core.Services.General.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.Services.General\\AppProject.Core.Services.General.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Core.Services\\AppProject.Core.Services.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Core.Services\\AppProject.Core.Services.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Resources\\AppProject.Resources.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Resources\\AppProject.Resources.csproj"
+            },
+            "C:\\Course\\dotnet-template\\AppProject.Utils\\AppProject.Utils.csproj": {
+              "projectPath": "C:\\Course\\dotnet-template\\AppProject.Utils\\AppProject.Utils.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.OpenApi": {
+            "target": "Package",
+            "version": "[9.0.14, )"
+          },
+          "StyleCop.Analyzers": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[1.1.118, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

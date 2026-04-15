@@ -1,0 +1,116 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "AppProject.Core.Models.General/1.0.0": {
+        "dependencies": {
+          "AppProject.Utils": "1.0.0",
+          "Appproject.Core.Models": "1.0.0",
+          "StyleCop.Analyzers": "1.1.118"
+        },
+        "runtime": {
+          "AppProject.Core.Models.General.dll": {}
+        }
+      },
+      "StyleCop.Analyzers/1.1.118": {},
+      "Appproject.Core.Models/1.0.0": {
+        "dependencies": {
+          "AppProject.Exceptions": "1.0.0",
+          "AppProject.Models": "1.0.0",
+          "AppProject.Resources": "1.0.0",
+          "AppProject.Utils": "1.0.0"
+        },
+        "runtime": {
+          "Appproject.Core.Models.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AppProject.Exceptions/1.0.0": {
+        "dependencies": {
+          "AppProject.Utils": "1.0.0"
+        },
+        "runtime": {
+          "AppProject.Exceptions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AppProject.Models/1.0.0": {
+        "dependencies": {
+          "AppProject.Utils": "1.0.0"
+        },
+        "runtime": {
+          "AppProject.Models.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AppProject.Resources/1.0.0": {
+        "dependencies": {
+          "AppProject.Utils": "1.0.0"
+        },
+        "runtime": {
+          "AppProject.Resources.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AppProject.Utils/1.0.0": {
+        "runtime": {
+          "AppProject.Utils.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AppProject.Core.Models.General/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StyleCop.Analyzers/1.1.118": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Onx6ovGSqXSK07n/0eM3ZusiNdB6cIlJdabQhWGgJp3Vooy9AaLS/tigeybOJAobqbtggTamoWndz72JscZBvw==",
+      "path": "stylecop.analyzers/1.1.118",
+      "hashPath": "stylecop.analyzers.1.1.118.nupkg.sha512"
+    },
+    "Appproject.Core.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AppProject.Exceptions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AppProject.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AppProject.Resources/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AppProject.Utils/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

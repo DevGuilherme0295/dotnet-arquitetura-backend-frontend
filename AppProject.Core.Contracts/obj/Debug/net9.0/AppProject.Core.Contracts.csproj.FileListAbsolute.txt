@@ -1,0 +1,16 @@
+C:\Course\dotnet-template\AppProject.Core.Contracts\bin\Debug\net9.0\AppProject.Core.Contracts.deps.json
+C:\Course\dotnet-template\AppProject.Core.Contracts\bin\Debug\net9.0\AppProject.Core.Contracts.dll
+C:\Course\dotnet-template\AppProject.Core.Contracts\bin\Debug\net9.0\AppProject.Core.Contracts.pdb
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\AppProject.Core.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\AppProject.Core.Contracts.AssemblyInfoInputs.cache
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\AppProject.Core.Contracts.AssemblyInfo.cs
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\AppProject.Core.Contracts.csproj.CoreCompileInputs.cache
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\AppProject.Core.Contracts.dll
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\refint\AppProject.Core.Contracts.dll
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\AppProject.Core.Contracts.pdb
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\ref\AppProject.Core.Contracts.dll
+C:\Course\dotnet-template\AppProject.Core.Contracts\bin\Debug\net9.0\.xml
+C:\Course\dotnet-template\AppProject.Core.Contracts\bin\Debug\net9.0\AppProject.Utils.dll
+C:\Course\dotnet-template\AppProject.Core.Contracts\bin\Debug\net9.0\AppProject.Utils.pdb
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\AppProject.Core.Contracts.csproj.AssemblyReference.cache
+C:\Course\dotnet-template\AppProject.Core.Contracts\obj\Debug\net9.0\AppProje.CD3C6D5E.Up2Date

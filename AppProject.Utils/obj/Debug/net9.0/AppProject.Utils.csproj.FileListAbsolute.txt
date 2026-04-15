@@ -1,0 +1,12 @@
+C:\Course\dotnet-template\AppProject.Utils\bin\Debug\net9.0\AppProject.Utils.deps.json
+C:\Course\dotnet-template\AppProject.Utils\bin\Debug\net9.0\AppProject.Utils.dll
+C:\Course\dotnet-template\AppProject.Utils\bin\Debug\net9.0\AppProject.Utils.pdb
+C:\Course\dotnet-template\AppProject.Utils\obj\Debug\net9.0\AppProject.Utils.GeneratedMSBuildEditorConfig.editorconfig
+C:\Course\dotnet-template\AppProject.Utils\obj\Debug\net9.0\AppProject.Utils.AssemblyInfoInputs.cache
+C:\Course\dotnet-template\AppProject.Utils\obj\Debug\net9.0\AppProject.Utils.AssemblyInfo.cs
+C:\Course\dotnet-template\AppProject.Utils\obj\Debug\net9.0\AppProject.Utils.csproj.CoreCompileInputs.cache
+C:\Course\dotnet-template\AppProject.Utils\obj\Debug\net9.0\AppProject.Utils.dll
+C:\Course\dotnet-template\AppProject.Utils\obj\Debug\net9.0\refint\AppProject.Utils.dll
+C:\Course\dotnet-template\AppProject.Utils\obj\Debug\net9.0\AppProject.Utils.pdb
+C:\Course\dotnet-template\AppProject.Utils\obj\Debug\net9.0\ref\AppProject.Utils.dll
+C:\Course\dotnet-template\AppProject.Utils\bin\Debug\net9.0\.xml

@@ -1,0 +1,16 @@
+C:\Course\dotnet-template\AppProject.Models\bin\Debug\net9.0\AppProject.Models.deps.json
+C:\Course\dotnet-template\AppProject.Models\bin\Debug\net9.0\AppProject.Models.dll
+C:\Course\dotnet-template\AppProject.Models\bin\Debug\net9.0\AppProject.Models.pdb
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\AppProject.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\AppProject.Models.AssemblyInfoInputs.cache
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\AppProject.Models.AssemblyInfo.cs
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\AppProject.Models.csproj.CoreCompileInputs.cache
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\AppProject.Models.dll
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\refint\AppProject.Models.dll
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\AppProject.Models.pdb
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\ref\AppProject.Models.dll
+C:\Course\dotnet-template\AppProject.Models\bin\Debug\net9.0\.xml
+C:\Course\dotnet-template\AppProject.Models\bin\Debug\net9.0\AppProject.Utils.dll
+C:\Course\dotnet-template\AppProject.Models\bin\Debug\net9.0\AppProject.Utils.pdb
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\AppProject.Models.csproj.AssemblyReference.cache
+C:\Course\dotnet-template\AppProject.Models\obj\Debug\net9.0\AppProje.8EE8FD09.Up2Date

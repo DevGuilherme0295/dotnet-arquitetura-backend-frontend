@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Course\\dotnet-template\\AppProject.Web.Shared\\wwwroot\\background.png",
+      "PackagePath": "staticwebassets\\background.png"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.AppProject.Web.Shared.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.AppProject.Web.Shared.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.AppProject.Web.Shared.props",
+      "PackagePath": "build\\AppProject.Web.Shared.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.AppProject.Web.Shared.props",
+      "PackagePath": "buildMultiTargeting\\AppProject.Web.Shared.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.AppProject.Web.Shared.props",
+      "PackagePath": "buildTransitive\\AppProject.Web.Shared.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
