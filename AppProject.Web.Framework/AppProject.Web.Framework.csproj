@@ -16,7 +16,7 @@
     <ProjectReference Include="..\AppProject.Utils\AppProject.Utils.csproj" />
     <ProjectReference Include="..\AppProject.Web.ApiClient\AppProject.Web.ApiClient.csproj" />
     <ProjectReference Include="..\AppProject.Web.Models\AppProject.Web.Models.csproj" />
-    <ProjectReference Include="..\AppProjects.Exceptions\AppProject.Exceptions.csproj" />
+    <ProjectReference Include="..\AppProject.Exceptions\AppProject.Exceptions.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,4 +6,4 @@ obj/
 *.cache
 *.pdb
 node_modules/
-dist/
+/dist/

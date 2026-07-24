@@ -9,6 +9,6 @@
     <ProjectReference Include="..\Appproject.Core.Models\Appproject.Core.Models.csproj" />
     <ProjectReference Include="..\AppProject.Resources\AppProject.Resources.csproj" />
     <ProjectReference Include="..\AppProject.Utils\AppProject.Utils.csproj" />
-    <ProjectReference Include="..\AppProjects.Exceptions\AppProject.Exceptions.csproj" />
+    <ProjectReference Include="..\AppProject.Exceptions\AppProject.Exceptions.csproj" />
   </ItemGroup>
 </Project>

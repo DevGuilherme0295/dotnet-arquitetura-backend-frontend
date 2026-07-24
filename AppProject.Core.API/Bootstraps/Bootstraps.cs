@@ -1,7 +1,10 @@
 using System;
 using System.Globalization;
 using System.Reflection;
+using AppProject.Core.API.Middlewares;
+using AppProject.Exceptions;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AppProject.Core.API.Bootstraps;
 
@@ -13,15 +16,26 @@ public static class Bootstraps
 
         ConfigureControllers(mvcBuilder);
 
+        ConfigureLocalization(builder, mvcBuilder);
+
+        builder.Services.Configure<ApiBehaviorOptions>(options =>
+        {
+            ConfigureValidations(options);
+        });
+
         return builder;
     }
 
     public static WebApplication UseApiPipeline(this WebApplication app)
     {
+        app.UseRequestLocalization();
+
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
         }
+
+        app.UseMiddleware<ExceptionMiddleware>();
 
         app.UseHttpsRedirection();
 
@@ -57,6 +71,19 @@ public static class Bootstraps
                 new AcceptLanguageHeaderRequestCultureProvider()
             };
         });
+    }
+
+    private static void ConfigureValidations(ApiBehaviorOptions options)
+    {
+        options.InvalidModelStateResponseFactory = context =>
+        {
+            var modelErros = context.ModelState
+                .Where(e => e.Value?.Errors.Count > 0)
+                .SelectMany(e => e.Value!.Errors.Select(er => er.ErrorMessage));
+
+            var errors = modelErros.Any() ? string.Join(" ", modelErros) : null;
+            throw new AppException(ExceptionCode.RequestValidation, errors);
+        };
     }
 
     private static IEnumerable<Assembly> GetControllersAssemblies() =>

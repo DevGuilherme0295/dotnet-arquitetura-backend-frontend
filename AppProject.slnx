@@ -3,7 +3,7 @@
     <Project Path="AppProject.Models/AppProject.Models.csproj" />
     <Project Path="AppProject.Resources/AppProject.Resources.csproj" />
     <Project Path="AppProject.Utils/AppProject.Utils.csproj" />
-    <Project Path="AppProjects.Exceptions/AppProject.Exceptions.csproj" />
+    <Project Path="AppProject.Exceptions/AppProject.Exceptions.csproj" />
   </Folder>
   <Folder Name="/1 - Backend/" />
   <Folder Name="/1 - Backend/1.0 - Models/">
