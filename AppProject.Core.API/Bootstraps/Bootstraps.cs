@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using System.Reflection;
 using AppProject.Core.API.Middlewares;
+using AppProject.Core.Services;
 using AppProject.Exceptions;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,8 @@ public static class Bootstraps
         {
             ConfigureValidations(options);
         });
+
+        ConfigureServices(builder);
 
         return builder;
     }
@@ -86,8 +89,38 @@ public static class Bootstraps
         };
     }
 
+    private static void ConfigureServices(WebApplicationBuilder builder)
+    {
+        builder.Services.Scan(x =>
+            x.FromAssemblies(GetServiceAssemblies())
+            .AddClasses(y =>
+                y.AssignableTo<ITransientService>())
+            .AsImplementedInterfaces()
+            .WithTransientLifetime());
+
+        builder.Services.Scan(x =>
+            x.FromAssemblies(GetServiceAssemblies())
+            .AddClasses(y =>
+                y.AssignableTo<IScopedService>())
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
+
+        builder.Services.Scan(x =>
+            x.FromAssemblies(GetServiceAssemblies())
+            .AddClasses(y =>
+                y.AssignableTo<ISingletonService>())
+            .AsImplementedInterfaces()
+            .WithSingletonLifetime());
+    }
+
     private static IEnumerable<Assembly> GetControllersAssemblies() =>
     [
         Assembly.Load("AppProject.Core.Controllers.General"),
+    ];
+
+    private static IEnumerable<Assembly> GetServiceAssemblies() =>
+    [
+        Assembly.Load("AppProject.Core.Services"),
+        Assembly.Load("AppProject.Core.Services.General")
     ];
 }
