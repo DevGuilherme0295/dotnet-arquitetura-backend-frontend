@@ -4,10 +4,15 @@ using System.Reflection;
 using AppProject.Core.API.Auth;
 using AppProject.Core.API.Middlewares;
 using AppProject.Core.Contracts;
+using AppProject.Core.Infrastructure.Database;
+using AppProject.Core.Infrastructure.Database.Mapper;
 using AppProject.Core.Services;
 using AppProject.Exceptions;
+using Mapster;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticAssets;
+using Microsoft.EntityFrameworkCore;
 
 namespace AppProject.Core.API.Bootstraps;
 
@@ -30,6 +35,10 @@ public static class Bootstraps
 
         ConfigureUsers(builder);
 
+        ConfigureMapper(builder);
+
+        ConfigureDatabase(builder);
+
         return builder;
     }
 
@@ -49,6 +58,14 @@ public static class Bootstraps
         app.MapControllers();
 
         return app;
+    }
+
+    public static async Task InitializeDatabaseAsync(this WebApplication app)
+    {
+        using var scope = app.Services.CreateScope();
+        var applicationDbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        await applicationDbContext.Database.MigrateAsync();
     }
 
     private static void ConfigureControllers(IMvcBuilder mvcBuilder)
@@ -122,6 +139,47 @@ public static class Bootstraps
         builder.Services.AddScoped<IUserContext, UserContext>();
     }
 
+    private static void ConfigureMapper(WebApplicationBuilder builder)
+    {
+        builder.Services.AddMapster();
+
+        builder.Services.Scan(scan => scan
+            .FromAssemblyOf<IRegisterMapsterConfig>()
+            .AddClasses(classes => classes.AssignableTo<IRegisterMapsterConfig>())
+            .As<IRegisterMapsterConfig>()
+            .WithSingletonLifetime());
+
+        var provider = builder.Services.BuildServiceProvider();
+        var configs = provider.GetServices<IRegisterMapsterConfig>();
+
+        var config = TypeAdapterConfig.GlobalSettings;
+
+        foreach (var mapConfig in configs)
+        {
+            mapConfig.Register(config);
+        }
+
+        builder.Services.AddSingleton(config);
+    }
+
+    private static void ConfigureDatabase(WebApplicationBuilder builder)
+    {
+        var connectionStringsOptions = new ConnectionStringsOptions();
+        builder.Configuration.GetSection("ConnectionStrings").Bind(connectionStringsOptions);
+
+        var databaseConnection = connectionStringsOptions.DatabaseConnection;
+        if (string.IsNullOrWhiteSpace(databaseConnection))
+        {
+            throw new ArgumentException("Database connection string is not configured.");
+        }
+
+        builder.Services.AddDbContext<ApplicationDbContext>(x =>
+            x.UseSqlServer(
+                    databaseConnection,
+                    y => y.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+    }
+
     private static IEnumerable<Assembly> GetControllersAssemblies() =>
     [
         Assembly.Load("AppProject.Core.Controllers.General"),
@@ -132,4 +190,9 @@ public static class Bootstraps
         Assembly.Load("AppProject.Core.Services"),
         Assembly.Load("AppProject.Core.Services.General")
     ];
+
+    private class ConnectionStringsOptions
+    {
+        public string? DatabaseConnection { get; set; }
+    }
 }
