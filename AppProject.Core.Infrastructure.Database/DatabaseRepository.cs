@@ -2,15 +2,23 @@ using System;
 using AppProject.Core.Contracts;
 using AppProject.Core.Infrastructure.Database.Entities;
 using AppProject.Exceptions;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace AppProject.Core.Infrastructure.Database;
 
 public class DatabaseRepository(
     ApplicationDbContext applicationDbContext,
-    IUserContext userContext)
+    IUserContext userContext,
+    TypeAdapterConfig typeAdapterConfig)
     : IDatabaseRepository
 {
+    public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        return await applicationDbContext.Database.BeginTransactionAsync(cancellationToken);
+    }
+
     public async Task InsertAsync<TEntity>(TEntity entity, CancellationToken cancellationToken = default)
         where TEntity : BaseEntity
     {
@@ -58,12 +66,59 @@ public class DatabaseRepository(
     {
         try
         {
-           await applicationDbContext.SaveChangesAsync(cancellationToken);
+            await applicationDbContext.SaveChangesAsync(cancellationToken);
         }
         catch (DbUpdateConcurrencyException concurrencyException)
         {
             throw new AppException(ExceptionCode.Concurrency, innerException: concurrencyException);
         }
+    }
+
+    public async Task<IReadOnlyCollection<TDestination>> GetAllAsync<TEntity, TDestination>(CancellationToken cancellationToken = default)
+        where TEntity : BaseEntity
+        where TDestination : class
+    {
+        return await applicationDbContext.Set<TEntity>().AsQueryable().ProjectToType<TDestination>(typeAdapterConfig).ToListAsync(cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<TEntity>> GetAllAsync<TEntity>(CancellationToken cancellationToken = default)
+        where TEntity : BaseEntity
+    {
+        return await applicationDbContext.Set<TEntity>().AsQueryable().ToListAsync(cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<TDestination>> GetByConditionAsync<TEntity, TDestination>(Func<IQueryable<TEntity>, IQueryable<TEntity>> queryble, CancellationToken cancellationToken = default)
+        where TEntity : BaseEntity
+        where TDestination : class
+    {
+        return await queryble(applicationDbContext.Set<TEntity>().AsQueryable()).ProjectToType<TDestination>(typeAdapterConfig).ToListAsync(cancellationToken);
+    }
+
+    public async Task<IReadOnlyCollection<TEntity>> GetByConditionAsync<TEntity>(Func<IQueryable<TEntity>, IQueryable<TEntity>> queryble, CancellationToken cancellationToken = default)
+        where TEntity : BaseEntity
+    {
+        return await queryble(applicationDbContext.Set<TEntity>().AsQueryable()).ToListAsync(cancellationToken);
+    }
+
+    public async Task<TDestination?> GetFirstOrDefaultAsync<TEntity, TDestination>(Func<IQueryable<TEntity>, IQueryable<TEntity>> queryble, CancellationToken cancellationToken = default)
+        where TEntity : BaseEntity
+        where TDestination : class
+    {
+        return (await this.GetByConditionAsync<TEntity, TDestination>(queryble, cancellationToken))
+            .FirstOrDefault();
+    }
+
+    public async Task<TEntity?> GetFirstOrDefaultAsync<TEntity>(Func<IQueryable<TEntity>, IQueryable<TEntity>> queryble, CancellationToken cancellationToken = default)
+        where TEntity : BaseEntity
+    {
+        return (await this.GetByConditionAsync(queryble, cancellationToken))
+            .FirstOrDefault();
+    }
+
+    public async Task<bool> HasAnyAsync<TEntity>(Func<IQueryable<TEntity>, IQueryable<TEntity>> queryble, CancellationToken cancellationToken = default)
+        where TEntity : BaseEntity
+    {
+        return await queryble(applicationDbContext.Set<TEntity>().AsQueryable()).AnyAsync(cancellationToken);
     }
 
     private async Task SetAuditFieldAsync<TEntity>(TEntity entity, bool isInsert, CancellationToken cancellationToken = default)

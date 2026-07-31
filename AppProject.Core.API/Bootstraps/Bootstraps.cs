@@ -164,6 +164,8 @@ public static class Bootstraps
 
     private static void ConfigureDatabase(WebApplicationBuilder builder)
     {
+        builder.Services.AddScoped<IDatabaseRepository, DatabaseRepository>();
+
         var connectionStringsOptions = new ConnectionStringsOptions();
         builder.Configuration.GetSection("ConnectionStrings").Bind(connectionStringsOptions);
 
