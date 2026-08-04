@@ -218,6 +218,8 @@ public static class Bootstraps
     private static void ConfigureUsers(WebApplicationBuilder builder)
     {
         builder.Services.AddScoped<IUserContext, UserContext>();
+
+        builder.Services.AddHttpContextAccessor();
     }
 
     private static void ConfigureMapper(WebApplicationBuilder builder)
