@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Globalization;
 using System.Reflection;
 using System.Security.Claims;
@@ -6,6 +7,7 @@ using AppProject.Core.API.Auth;
 using AppProject.Core.API.Middlewares;
 using AppProject.Core.Contracts;
 using AppProject.Core.Infrastructure.Database;
+using AppProject.Core.Infrastructure.Database.Entities.Auth;
 using AppProject.Core.Infrastructure.Database.Mapper;
 using AppProject.Core.Services;
 using AppProject.Exceptions;
@@ -98,6 +100,53 @@ public static class Bootstraps
         var applicationDbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
         await applicationDbContext.Database.MigrateAsync();
+    }
+
+    public static async Task CreateOrUpdateSystemAdminAsync(this WebApplication app)
+    {
+        using var scope = app.Services.CreateScope();
+        var applicationDbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        var systemAdminUserOptions = new SystemAdminUserOptions();
+        app.Configuration.GetSection("SystemAdminUser").Bind(systemAdminUserOptions);
+
+        if (string.IsNullOrWhiteSpace(systemAdminUserOptions.Name)
+            || string.IsNullOrWhiteSpace(systemAdminUserOptions.Email))
+        {
+            throw new ArgumentException("SystemAdminUser configuration is not set properly.");
+        }
+
+        var user = await applicationDbContext.Users.FirstOrDefaultAsync(u => u.IsSystemAdmin);
+
+        if (user == null)
+        {
+            var adminUserId = Guid.NewGuid();
+
+            user = new TbUser
+            {
+                Id = adminUserId,
+                Name = systemAdminUserOptions.Name,
+                Email = systemAdminUserOptions.Email,
+                IsSystemAdmin = true,
+                CreatedAt = DateTime.UtcNow,
+                CreatedByUserId = adminUserId,
+                CreatedByUserName = systemAdminUserOptions.Name!
+            };
+
+            applicationDbContext.Users.Add(user);
+            await applicationDbContext.SaveChangesAsync();
+        }
+        else if (user.Name != systemAdminUserOptions.Name || user.Email != systemAdminUserOptions.Email)
+        {
+            user.Name = systemAdminUserOptions.Name!;
+            user.Email = systemAdminUserOptions.Email!;
+            user.UpdatedAt = DateTime.UtcNow;
+            user.UpdatedByUserId = user.Id;
+            user.UpdatedByUserName = user.Name;
+
+            applicationDbContext.Users.Update(user);
+            await applicationDbContext.SaveChangesAsync();
+        }
     }
 
     private static void ConfigureControllers(IMvcBuilder mvcBuilder)
@@ -338,5 +387,12 @@ public static class Bootstraps
         public string? ClientId { get; set; }
 
         public string? Audience { get; set; }
+    }
+
+    private class SystemAdminUserOptions
+    {
+        public string? Name { get; set; }
+
+        public string? Email { get; set; }
     }
 }
