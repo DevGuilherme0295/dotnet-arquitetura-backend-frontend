@@ -331,7 +331,7 @@ public static class Bootstraps
                 {
                     AuthorizationCode = new OpenApiOAuthFlow
                     {
-                        AuthorizationUrl = new Uri($"{auth0Options.Authority}/authorize"),
+                        AuthorizationUrl = new Uri($"{auth0Options.Authority}/authorize?prompt=login"),
                         TokenUrl = new Uri($"{auth0Options.Authority}/oauth/token"),
                         Scopes = new Dictionary<string, string>
                         {
