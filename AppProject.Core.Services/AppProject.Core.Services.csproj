@@ -11,4 +11,7 @@
     <ProjectReference Include="..\AppProject.Utils\AppProject.Utils.csproj" />
     <ProjectReference Include="..\AppProject.Exceptions\AppProject.Exceptions.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Auth\" />
+  </ItemGroup>
 </Project>
