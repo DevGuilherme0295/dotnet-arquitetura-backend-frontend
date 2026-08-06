@@ -3,6 +3,7 @@ using System.Data;
 using System.Globalization;
 using System.Reflection;
 using System.Security.Claims;
+using System.Threading.RateLimiting;
 using AppProject.Core.API.Auth;
 using AppProject.Core.API.Middlewares;
 using AppProject.Core.Contracts;
@@ -57,6 +58,8 @@ public static class Bootstraps
 
         ConfigureCors(builder);
 
+        ConfigureRateLimiting(builder);
+
         return builder;
     }
 
@@ -89,12 +92,28 @@ public static class Bootstraps
                 });
             });
         }
+        else
+        {
+            app.UseHsts();
+        }
+
+        app.Use(async (context, next) =>
+        {
+            context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+            context.Response.Headers["X-Frame-Options"] = "DENY";
+            context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
+            context.Response.Headers["Referrer-Policy"] = "no-referrer";
+            context.Response.Headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()";
+            await next();
+        });
 
         app.UseMiddleware<ExceptionMiddleware>();
 
         app.UseHttpsRedirection();
 
         app.UseCors(DefaultCorsPolicyName);
+
+        app.UseRateLimiter();
 
         app.UseAuthentication();
         app.UseAuthorization();
@@ -422,6 +441,31 @@ public static class Bootstraps
         });
     }
 
+    private static void ConfigureRateLimiting(WebApplicationBuilder builder)
+    {
+        var rateOptions = new RateLimitingOptions();
+        builder.Configuration.GetSection("RateLimiting").Bind(rateOptions);
+
+        if (rateOptions.PermitLimit <= 0 || rateOptions.WindowSeconds <= 0 || rateOptions.QueueLimit < 0)
+        {
+            throw new ArgumentException("Rate limiting options are not configured properly.");
+        }
+
+        builder.Services.AddRateLimiter(options =>
+        {
+            options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+                RateLimitPartition.GetFixedWindowLimiter(
+                    partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+                    factory: _ => new FixedWindowRateLimiterOptions
+                    {
+                        PermitLimit = rateOptions.PermitLimit,
+                        Window = TimeSpan.FromSeconds(rateOptions.WindowSeconds),
+                        QueueLimit = rateOptions.QueueLimit,
+                        QueueProcessingOrder = QueueProcessingOrder.OldestFirst
+                    }));
+        });
+    }
+
     private static IEnumerable<Assembly> GetControllersAssemblies() =>
     [
         Assembly.Load("AppProject.Core.Controllers.General"),
@@ -457,5 +501,12 @@ public static class Bootstraps
     private class CorsOptions
     {
         public string[] AllowedOrigins { get; set; } = Array.Empty<string>();
+    }
+
+    private class RateLimitingOptions
+    {
+        public int PermitLimit { get; set; }
+        public int WindowSeconds { get; set; }
+        public int QueueLimit { get; set; }
     }
 }
