@@ -25,6 +25,7 @@ namespace AppProject.Core.API.Bootstraps;
 
 public static class Bootstraps
 {
+    private const string DefaultCorsPolicyName = "DefaultCorsPolicy";
     public static WebApplicationBuilder AddApiServices(this WebApplicationBuilder builder)
     {
         var mvcBuilder = builder.Services.AddControllers();
@@ -53,6 +54,8 @@ public static class Bootstraps
         ConfigureCache(builder);
 
         ConfigureLog(builder);
+
+        ConfigureCors(builder);
 
         return builder;
     }
@@ -90,6 +93,8 @@ public static class Bootstraps
         app.UseMiddleware<ExceptionMiddleware>();
 
         app.UseHttpsRedirection();
+
+        app.UseCors(DefaultCorsPolicyName);
 
         app.UseAuthentication();
         app.UseAuthorization();
@@ -395,6 +400,28 @@ public static class Bootstraps
         // You can configure Application Insights or other logging providers here
     }
 
+    private static void ConfigureCors(WebApplicationBuilder builder)
+    {
+        var corsOptions = new CorsOptions();
+        builder.Configuration.GetSection("Cors").Bind(corsOptions);
+
+        if (corsOptions.AllowedOrigins?.Any() == false)
+        {
+            throw new ArgumentException("CORS allowed origins are not configured.");
+        }
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(DefaultCorsPolicyName, policy =>
+            {
+                policy.WithOrigins(corsOptions?.AllowedOrigins ?? Array.Empty<string>())
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
+        });
+    }
+
     private static IEnumerable<Assembly> GetControllersAssemblies() =>
     [
         Assembly.Load("AppProject.Core.Controllers.General"),
@@ -425,5 +452,10 @@ public static class Bootstraps
         public string? Name { get; set; }
 
         public string? Email { get; set; }
+    }
+
+    private class CorsOptions
+    {
+        public string[] AllowedOrigins { get; set; } = Array.Empty<string>();
     }
 }
