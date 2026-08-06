@@ -9,6 +9,7 @@ public class ExceptionMiddleware
 {
     private readonly RequestDelegate next;
     private readonly ILogger<ExceptionMiddleware> logger;
+    
     public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
     {
         this.next = next;

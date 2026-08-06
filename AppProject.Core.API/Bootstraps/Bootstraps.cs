@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.StaticAssets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Hybrid;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace AppProject.Core.API.Bootstraps;
 
@@ -50,6 +51,8 @@ public static class Bootstraps
         ConfigureSwagger(builder);
 
         ConfigureCache(builder);
+
+        ConfigureLog(builder);
 
         return builder;
     }
@@ -89,8 +92,9 @@ public static class Bootstraps
         app.UseHttpsRedirection();
 
         app.UseAuthentication();
-
         app.UseAuthorization();
+
+        app.UseMiddleware<SerilogUserEnricherMiddleware>();
 
         app.MapControllers();
 
@@ -377,6 +381,18 @@ public static class Bootstraps
         builder.Services.AddHybridCache();
 
         // You can configure IDistributedCache here if needed and connect with Redis or other cache providers
+    }
+
+    private static void ConfigureLog(WebApplicationBuilder builder)
+    {
+        Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(builder.Configuration)
+            .Enrich.FromLogContext()
+            .CreateLogger();
+        
+        builder.Logging.AddSerilog(Log.Logger);
+
+        // You can configure Application Insights or other logging providers here
     }
 
     private static IEnumerable<Assembly> GetControllersAssemblies() =>

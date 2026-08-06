@@ -113,7 +113,7 @@ public class UserContext(
         }
         else
         {
-            //Not authenticated, return system admin user as fallback
+            // Not authenticated, return system admin user as fallback
             this.currentUser = systemAdminUser;
             return this.currentUser;
         }

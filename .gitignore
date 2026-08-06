@@ -7,3 +7,4 @@ obj/
 *.pdb
 node_modules/
 /dist/
+AppProject.Core.API/logs/
