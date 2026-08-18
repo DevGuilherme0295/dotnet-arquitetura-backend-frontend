@@ -8,6 +8,7 @@ using AppProject.Core.API.Auth;
 using AppProject.Core.API.EmailRenderer;
 using AppProject.Core.API.Middlewares;
 using AppProject.Core.Contracts;
+using AppProject.Core.Infrastructure.AI;
 using AppProject.Core.Infrastructure.Database;
 using AppProject.Core.Infrastructure.Database.Entities.Auth;
 using AppProject.Core.Infrastructure.Database.Mapper;
@@ -64,6 +65,8 @@ public static class Bootstraps
         ConfigureRateLimiting(builder);
 
         ConfigureEmail(builder);
+
+        ConfigureAI(builder);
 
         return builder;
     }
@@ -490,6 +493,12 @@ public static class Bootstraps
 
             options.ApiKey = apiKey;
         });
+    }
+
+    private static void ConfigureAI(WebApplicationBuilder builder)
+    {
+        builder.Services.Configure<AIOptions>(builder.Configuration.GetSection("AI"));
+        builder.Services.AddScoped<IChatClient, ChatClient>();
     }
 
     private static IEnumerable<Assembly> GetControllersAssemblies() =>

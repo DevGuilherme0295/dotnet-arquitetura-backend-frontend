@@ -7,4 +7,7 @@
     <ProjectReference Include="..\AppProject.Utils\AppProject.Utils.csproj" />
     <ProjectReference Include="..\AppProject.Exceptions\AppProject.Exceptions.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenAI" Version="2.13.0" />
+  </ItemGroup>
 </Project>
