@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
  
 
@@ -36,6 +36,7 @@
 
    <PropertyGroup>
     <PreserveCompilationContext>true</PreserveCompilationContext>
+    <UserSecretsId>20a65006-56a5-411f-9301-ca68f47fe127</UserSecretsId>
   </PropertyGroup>
 
  
