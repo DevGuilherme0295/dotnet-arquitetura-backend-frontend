@@ -34,6 +34,10 @@
     <ProjectReference Include="..\AppProject.Utils\AppProject.Utils.csproj" />
   </ItemGroup>
 
+   <PropertyGroup>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+  </PropertyGroup>
+
  
 
   <ItemGroup>
@@ -41,7 +45,9 @@
     <Folder Include="Bootstraps\" />
     <Folder Include="Controllers\" />
     <Folder Include="Controllers\Auth\" />
+    <Folder Include="EmailRenderer\" />
     <Folder Include="Middlewares\" />
   </ItemGroup>
+
 
 </Project>

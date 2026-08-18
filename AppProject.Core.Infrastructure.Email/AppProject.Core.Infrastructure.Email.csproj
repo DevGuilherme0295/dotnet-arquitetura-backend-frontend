@@ -5,4 +5,15 @@
     <ProjectReference Include="..\AppProject.Utils\AppProject.Utils.csproj" />
     <ProjectReference Include="..\AppProject.Exceptions\AppProject.Exceptions.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="RazorLight" Version="2.3.1" />
+    <PackageReference Include="SendGrid.Extensions.DependencyInjection" Version="1.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\**\*.cshtml" />
+  </ItemGroup>
 </Project>
