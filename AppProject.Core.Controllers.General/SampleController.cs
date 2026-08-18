@@ -1,5 +1,6 @@
 #if DEBUG
 using AppProject.Core.Contracts;
+using AppProject.Core.Infrastructure.AI;
 using AppProject.Core.Infrastructure.Email;
 using AppProject.Core.Infrastructure.Email.Models;
 using AppProject.Core.Models.General;
@@ -19,7 +20,8 @@ namespace AppProject.Core.Controllers.General
         IUserContext userContext,
         ILogger<SampleController> logger,
         IEmailTemplateRenderer emailTemplateRenderer,
-        IEmailSender emailSender)
+        IEmailSender emailSender,
+        IChatClient chatClient)
         : ControllerBase
     {
         [HttpGet]
@@ -112,6 +114,18 @@ namespace AppProject.Core.Controllers.General
             {
                 return this.StatusCode(500, "Failed to send email.");
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendAIConversationsAsync(CancellationToken cancellationToken = default)
+        {
+            var model = "Type the model";
+            var systemMessage = "You are a helpfull assistent. Reply the same language as the user.";
+            var userMessage = "What is c#?";
+
+            var response = await chatClient.SendSingleMessageAsync(model, systemMessage, userMessage, cancellationToken);
+
+            return this.Ok(response);
         }
     }
 }

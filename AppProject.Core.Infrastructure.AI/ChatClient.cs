@@ -6,7 +6,8 @@ using OpenAI.Chat;
 
 namespace AppProject.Core.Infrastructure.AI;
 
-public class ChatClient(IOptions<AIOptions> aiOptions) : IChatClient
+public class ChatClient(IOptions<AIOptions> aiOptions)
+    : IChatClient
 {
     public async Task<string> SendSingleMessageAsync(string model, string systemMessage, string userMessage, CancellationToken cancellationToken = default)
     {
